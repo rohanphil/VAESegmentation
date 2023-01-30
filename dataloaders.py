@@ -1,7 +1,7 @@
 import numpy as np 
 import torch
 import torchvision 
-from torch.utils.data import DataLoader,Dataset
+from torch.utils.data import DataLoader
 from utils import *
 
 class dataloader(object):
@@ -18,10 +18,10 @@ if __name__ == "__main__":
 	from argparse import ArgumentParser
 	parser = ArgumentParser(add_help=True)
 	def test_load():
-		train, mask, test = DataSet("data").load(train_size = 1, test_size = 1)
+		train, test = DataSet("data").load(train_size = 1, test_size = 1)
 		train_loader = []
 		try:
-			train_loader = dataloader(batch_size = 10).create_loader((train,mask))
+			train_loader = dataloader(batch_size = 10).create_loader((test))
 			assert(train_loader != [])
 			print(train_loader)
 			print("DataLoader created!!")
